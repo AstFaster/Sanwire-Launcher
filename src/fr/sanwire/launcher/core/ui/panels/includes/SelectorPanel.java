@@ -4,6 +4,7 @@ import fr.sanwire.launcher.core.auth.AuthManager;
 import fr.sanwire.launcher.core.ui.PanelManager;
 import fr.sanwire.launcher.core.ui.panels.Panels;
 import fr.sanwire.launcher.core.utils.References;
+import fr.sanwire.launcher.core.utils.logger.LogType;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Cursor;
@@ -117,7 +118,6 @@ public class SelectorPanel extends GridPane {
             this.setGrowAndAlignment(rectangle, VPos.BOTTOM, HPos.LEFT);
         }
 
-
         rectangle.setFill(Color.web("#BF581C"));
 
         return rectangle;
@@ -156,7 +156,7 @@ public class SelectorPanel extends GridPane {
     private Label playerName(){
         final Label playerName = new Label(AuthManager.getUsername());
         playerName.setTranslateX(55.0d);
-        playerName.setTranslateY(8.0d);
+        playerName.setTranslateY(13.0d);
 
         playerName.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 16.0d));
         playerName.setStyle("-fx-text-fill: #fff");
@@ -169,7 +169,7 @@ public class SelectorPanel extends GridPane {
     private Label playerEmail(){
         final Label playerEmail = new Label(emailSize());
         playerEmail.setTranslateX(55.0d);
-        playerEmail.setTranslateY(25.0d);
+        playerEmail.setTranslateY(33.0d);
 
         playerEmail.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 12.0d));
         playerEmail.setStyle("-fx-text-fill: #BF581C");
@@ -227,7 +227,6 @@ public class SelectorPanel extends GridPane {
     }
 
     private void labelHover(Label label){
-
         label.setOnMouseEntered(e -> {
             label.setStyle("-fx-text-fill: #fff");
             label.setCursor(Cursor.HAND);
@@ -284,6 +283,7 @@ public class SelectorPanel extends GridPane {
     private void openUrl(String url){
         try {
             Desktop.getDesktop().browse(new URI(url));
+            this.panelManager.getLauncher().getLogger().log("Opening " + url + ".", LogType.INFO);
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }

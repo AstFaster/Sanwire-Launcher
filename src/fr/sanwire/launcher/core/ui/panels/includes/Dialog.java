@@ -70,14 +70,14 @@ public class Dialog extends GridPane {
     }
 
     private Label content(){
-        Label header = new Label(this.content);
-        header.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 16.0d));
-        header.setStyle("-fx-text-fill: #d4d0d0");
-        header.setTranslateY(10.0d);
+        Label content = new Label(this.content);
+        content.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 16.0d));
+        content.setStyle("-fx-text-fill: #d4d0d0");
+        content.setTranslateY(10.0d);
 
-        setGrowAndAlignment(header, VPos.CENTER, HPos.CENTER);
+        setGrowAndAlignment(content, VPos.CENTER, HPos.CENTER);
 
-        return header;
+        return content;
     }
 
     private Button button(){
@@ -99,7 +99,7 @@ public class Dialog extends GridPane {
             button.setCursor(Cursor.DEFAULT);
             button.setStyle("-fx-background-color: #232323; -fx-border-color: #282828; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #d4d0d0");
         });
-        button.setOnAction(e -> {
+        button.setOnMouseClicked(e -> {
             this.setVisible(false);
             this.buttonClicked = true;
         });

@@ -3,7 +3,6 @@ package fr.sanwire.launcher.core.auth;
 import fr.sanwire.launcher.api.auth.Auth;
 import fr.sanwire.launcher.api.auth.exception.AuthException;
 import fr.sanwire.launcher.api.auth.request.AuthRequest;
-import fr.sanwire.launcher.api.auth.request.InvalidateRequest;
 import fr.sanwire.launcher.api.auth.request.RefreshRequest;
 import fr.sanwire.launcher.api.auth.response.AuthResponse;
 import fr.sanwire.launcher.api.auth.response.RefreshResponse;

@@ -139,7 +139,7 @@ public class SelectorPanel extends GridPane {
         final WebView view = new WebView();
         WebEngine engine = view.getEngine();
 
-        engine.load("https://crafatar.com/avatars/" + AuthManager.getUuid() + "?size=32&overlay");
+        engine.load("https://minotar.net/helm/" + AuthManager.getUuid() + "/32.png");
 
         view.setMaxWidth(32.0d);
         view.setMinWidth(32.0d);

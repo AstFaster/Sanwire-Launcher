@@ -16,6 +16,11 @@ import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.Stop;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -63,7 +68,144 @@ public class HomePanel extends AbstractPanel {
 
         this.setTakeAllPlace(centerPanel);
 
+        centerPanel.getChildren().addAll(
+                this.logo(), this.launcherName(), this.launcherVersion(), this.launcherDescription(),
+                this.recentNewsLabel(), this.leftNewsRectangle(), this.rightNewsPanel(), this.centerNewsPanel()
+        );
+
         return centerPanel;
+    }
+    
+    private ImageView logo(){
+        final ImageView view = new ImageView(new Image(Main.class.getResource("/resources/img/logo.png").toExternalForm()));
+        view.setFitWidth(100.0d);
+        view.setFitHeight(100.0d);
+        view.setTranslateX(250.0d);
+
+        this.setTakeAllPlace(view);
+        this.setLeft(view);
+        this.setTop(view);
+
+        return view;
+    }
+
+    private Label launcherName(){
+        final Label launcherName = new Label(References.NAME.toUpperCase());
+        launcherName.setTranslateX(365.0d);
+        launcherName.setTranslateY(25.0d);
+
+        launcherName.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR, 48.0d));
+        launcherName.setStyle("-fx-text-fill: #fff");
+
+        this.setTakeAllPlace(launcherName);
+        this.setLeft(launcherName);
+        this.setTop(launcherName);
+
+        return launcherName;
+    }
+
+    private Label launcherVersion(){
+        final Label launcherVersion = new Label("v." + References.VERSION);
+        launcherVersion.setTranslateX(-10.0d);
+        launcherVersion.setTranslateY(10.0d);
+
+        launcherVersion.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 14.0d));
+        launcherVersion.setStyle("-fx-text-fill: #ececec");
+
+        this.setTakeAllPlace(launcherVersion);
+        this.setRight(launcherVersion);
+        this.setTop(launcherVersion);
+
+        return launcherVersion;
+    }
+
+    private Label launcherDescription(){
+        final Label launcherDescription = new Label(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n"
+                + "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n"
+                + "dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat\n"
+                + "non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        );
+        launcherDescription.setTranslateY(110.0d);
+        launcherDescription.setTranslateX(255.0d);
+
+        launcherDescription.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 18.0d));
+        launcherDescription.setStyle("-fx-text-fill: #DDDDDD");
+
+        this.setTakeAllPlace(launcherDescription);
+        this.setLeft(launcherDescription);
+        this.setTop(launcherDescription);
+
+        return launcherDescription;
+    }
+    
+    private Label recentNewsLabel(){
+        final Label recentNewsLabel = new Label("Nouveautés récentes");
+        recentNewsLabel.setTranslateY(-375.0d);
+        recentNewsLabel.setTranslateX(110.0d);
+
+        recentNewsLabel.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR, 25.0d));
+        recentNewsLabel.setStyle("-fx-text-fill: #fff");
+
+        this.setTakeAllPlace(recentNewsLabel);
+        this.setBottom(recentNewsLabel);
+        this.setCenterH(recentNewsLabel);
+
+        return recentNewsLabel;
+    }
+
+    private Rectangle leftNewsRectangle(){
+        final Rectangle leftNewsRectangle = new Rectangle();
+        leftNewsRectangle.setWidth(275.0d);
+        leftNewsRectangle.setHeight(175.0d);
+        leftNewsRectangle.setTranslateY(-150.0d);
+        leftNewsRectangle.setTranslateX(-240.0d);
+
+        final RadialGradient gradient = new RadialGradient(0.0d, 0.0d, 0.5d, 0.5d, 1.0d, true, CycleMethod.NO_CYCLE, new Stop(1, Color.web("#1C1C1C")), new Stop(0, Color.web("#2C2C2C")));
+        leftNewsRectangle.setFill(gradient);
+        leftNewsRectangle.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);");
+
+        this.setTakeAllPlace(leftNewsRectangle);
+        this.setBottom(leftNewsRectangle);
+        this.setCenterH(leftNewsRectangle);
+
+        return leftNewsRectangle;
+    }
+
+    private Rectangle centerNewsPanel(){
+        final Rectangle centerNewsPanel = new Rectangle();
+        centerNewsPanel.setWidth(300.0d);
+        centerNewsPanel.setHeight(200.0d);
+        centerNewsPanel.setTranslateY(-150.0d);
+        centerNewsPanel.setTranslateX(110.0d);
+
+        final RadialGradient gradient = new RadialGradient(0.0d, 0.0d, 0.5d, 0.5d, 1.0d, true, CycleMethod.NO_CYCLE, new Stop(1, Color.web("#1C1C1C")), new Stop(0, Color.web("#2C2C2C")));
+        centerNewsPanel.setFill(gradient);
+        centerNewsPanel.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);");
+
+        this.setTakeAllPlace(centerNewsPanel);
+        this.setBottom(centerNewsPanel);
+        this.setCenterH(centerNewsPanel);
+
+        return centerNewsPanel;
+    }
+
+    private Rectangle rightNewsPanel(){
+        final Rectangle rightNewsPanel = new Rectangle();
+        rightNewsPanel.setWidth(275.0d);
+        rightNewsPanel.setHeight(175.0d);
+        rightNewsPanel.setTranslateY(-150.0d);
+        rightNewsPanel.setTranslateX(460.0d);
+
+        final RadialGradient gradient = new RadialGradient(0.0d, 0.0d, 0.5d, 0.5d, 1.0d, true, CycleMethod.NO_CYCLE, new Stop(1, Color.web("#1C1C1C")), new Stop(0, Color.web("#2C2C2C")));
+        rightNewsPanel.setFill(gradient);
+        rightNewsPanel.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);");
+
+        this.setTakeAllPlace(rightNewsPanel);
+        this.setBottom(rightNewsPanel);
+        this.setCenterH(rightNewsPanel);
+
+        return rightNewsPanel;
     }
 
     private GridPane addPlayPanel(){
